@@ -151,7 +151,7 @@ function salvarProduto() {
 
 // Função para carregar os produtos
 function carregarProdutos() {
-  fetch('produtos.json') // Caminho do arquivo produtos.json
+  fetch('produtos') // Caminho do arquivo produtos
   .then(response => response.json())
   .then(produtos => {
       const produtosContainer = document.getElementById('produtos');
