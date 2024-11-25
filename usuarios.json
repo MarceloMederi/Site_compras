@@ -5,6 +5,15 @@
     "cpf": "00000000000",
     "telefone": "34984096698",
     "dataNascimento": "1991-07-11",
-    "senha": "12345"
+    "senha": "12345",
+    "role": "admin"
+  },
+  {
+    "nome": "Jose Maria",
+    "email": "Teste@teste.com.br",
+    "cpf": "00000000000",
+    "telefone": "34984096698",
+    "dataNascimento": "2000-05-20",
+    "senha": "123"
   }
 ]

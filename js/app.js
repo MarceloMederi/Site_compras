@@ -82,7 +82,13 @@ function showLogin() {
       .then(data => {
         if (data.message === 'Login bem-sucedido!') {
           alert('Login bem-sucedido!');
+          localStorage.setItem('role', data.role); // Armazenar o role do usuário
           showLoja(); // Redireciona para a loja
+          
+          // Habilitar o botão de cadastro de produtos apenas se for admin
+          if (data.role === 'admin') {
+            document.getElementById('cadastro-produto').style.display = 'block';
+          }
         } else {
           alert(data.message || 'Erro no login');
         }
@@ -97,14 +103,17 @@ function showLogin() {
     const nomeProduto = document.getElementById('produto-nome').value;
     const descricaoProduto = document.getElementById('produto-descricao').value;
     const valorProduto = document.getElementById('produto-valor').value;
-  
+
     const produto = { nome: nomeProduto, descricao: descricaoProduto, valor: valorProduto };
-  
+
+    const userRole = localStorage.getItem('role'); // Recuperar o role do usuário logado
+
     // Requisição para cadastrar o produto no backend
     fetch('http://localhost:3000/cadastrarProduto', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'user-role': userRole // Enviar o role no header
       },
       body: JSON.stringify(produto),
     })
@@ -116,6 +125,7 @@ function showLogin() {
         console.error('Erro ao cadastrar produto:', error);
       });
   }
+
   
   // Função para carregar os produtos
   function mostrarProdutos() {

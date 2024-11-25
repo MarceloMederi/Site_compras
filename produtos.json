@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "nome": "Bala fini",
+    "descricao": "Bala de açucar",
+    "valor": "0.50"
+  },
+  {
+    "nome": "Bala fini",
+    "descricao": "Bala de açucar",
+    "valor": "0.60"
+  }
+]
