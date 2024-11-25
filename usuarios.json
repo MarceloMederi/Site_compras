@@ -15,5 +15,13 @@
     "telefone": "34984096698",
     "dataNascimento": "2000-05-20",
     "senha": "123"
+  },
+  {
+    "nome": "Loreto Silva",
+    "email": "Teste@teste.com.br",
+    "cpf": "11111111111",
+    "telefone": "34999999999",
+    "dataNascimento": "1985-06-15",
+    "senha": "1111"
   }
 ]

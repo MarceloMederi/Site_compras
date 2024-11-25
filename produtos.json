@@ -8,5 +8,15 @@
     "nome": "Bala fini",
     "descricao": "Bala de açucar",
     "valor": "0.60"
+  },
+  {
+    "nome": "bolo fuba",
+    "descricao": "bolo fuba",
+    "valor": "3.50"
+  },
+  {
+    "nome": "bolo de chocolate",
+    "descricao": "massa de cacau",
+    "valor": "6.25"
   }
 ]
