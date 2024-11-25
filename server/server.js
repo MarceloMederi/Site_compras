@@ -61,6 +61,37 @@ app.post("/cadastrarUsuario", (req, res) => {
     });
 });
 
+// Rota para login
+app.post("/login", (req, res) => {
+    const { nome, senha } = req.body;
+
+    // Caminho do arquivo usuarios.json
+    const usuariosFilePath = path.join(__dirname, "../usuarios.json");
+
+    // Lê o arquivo usuarios.json
+    fs.readFile(usuariosFilePath, "utf8", (err, data) => {
+        if (err) {
+            return res.status(500).json({ message: "Erro ao ler o arquivo de usuários" });
+        }
+
+        let usuarios;
+        try {
+            usuarios = JSON.parse(data);
+        } catch (parseError) {
+            return res.status(500).json({ message: "Erro ao parsear os dados do arquivo de usuários" });
+        }
+
+        // Verifica se existe um usuário com o nome e senha fornecidos
+        const usuario = usuarios.find(u => u.nome === nome && u.senha === senha);
+
+        if (usuario) {
+            return res.status(200).json({ message: "Login bem-sucedido!" });
+        } else {
+            return res.status(401).json({ message: "Nome ou senha incorretos" });
+        }
+    });
+});
+
 // Inicia o servidor
 const PORT = 3000;
 app.listen(PORT, () => {
