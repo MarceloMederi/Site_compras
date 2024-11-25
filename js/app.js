@@ -70,7 +70,7 @@ function showLogin() {
   function login() {
     const nome = document.getElementById('login-nome').value;
     const senha = document.getElementById('login-senha').value;
-  
+
     fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {
@@ -81,14 +81,11 @@ function showLogin() {
       .then(response => response.json())
       .then(data => {
         if (data.message === 'Login bem-sucedido!') {
+          // Armazena o usuário no localStorage (ou pode usar sessão ou cookies)
+          localStorage.setItem('usuarioLogado', JSON.stringify({ nome }));
+
           alert('Login bem-sucedido!');
-          localStorage.setItem('role', data.role); // Armazenar o role do usuário
           showLoja(); // Redireciona para a loja
-          
-          // Habilitar o botão de cadastro de produtos apenas se for admin
-          if (data.role === 'admin') {
-            document.getElementById('cadastro-produto').style.display = 'block';
-          }
         } else {
           alert(data.message || 'Erro no login');
         }
@@ -97,6 +94,33 @@ function showLogin() {
         console.error('Erro no login:', error);
       });
   }
+
+  // Chama a verificação de login quando o aplicativo carregar
+  window.onload = verificarLogin;
+
+
+  // Verifica se o usuário está logado e exibe o botão de logout
+  function verificarLogin() {
+    const usuarioLogado = localStorage.getItem('usuarioLogado');
+    if (usuarioLogado) {
+      document.getElementById('loja').style.display = 'block'; // Exibe a loja
+    } else {
+      backToHome(); // Volta à página inicial
+    }
+  }
+
+  // Função de logout
+  function logout() {
+    // Limpa os dados de login (pode ser feito de várias formas, dependendo de onde os dados estão armazenados)
+    // Se você estiver usando localStorage para armazenar os dados de login, você pode limpar assim:
+    localStorage.removeItem('usuarioLogado'); // Remover usuário do localStorage (caso tenha utilizado)
+
+    // Exibe novamente a página inicial
+    backToHome();
+
+    alert('Você foi desconectado!');
+  }
+
   
   // Função para cadastrar produtos (somente admin)
   function salvarProduto() {
