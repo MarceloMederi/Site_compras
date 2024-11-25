@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja Virtual</title>
+  <!-- Ajuste no caminho do CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="login-page">
+    <h2>Loja Virtual</h2>
+    <button onclick="showLogin()">Login</button>
+    <button onclick="showCadastroUsuario()">Cadastre-se</button>
+    <button onclick="showCadastroProduto()">Cadastrar Produto</button>
+  </div>
+
+  <div id="login-form" style="display:none;">
+    <h2>Login</h2>
+    <input type="text" id="login-nome" placeholder="Nome" />
+    <input type="password" id="login-senha" placeholder="Senha" />
+    <button onclick="login()">Entrar</button>
+    <button onclick="backToHome()">Voltar</button>
+  </div>
+
+  <div id="cadastro-usuario" style="display:none;">
+    <h2>Cadastre-se</h2>
+    <input type="text" id="nome" placeholder="Nome" />
+    <input type="email" id="email" placeholder="E-mail" />
+    <input type="text" id="cpf" placeholder="CPF" />
+    <input type="text" id="telefone" placeholder="Telefone" />
+    <input type="date" id="data-nascimento" placeholder="Data de Nascimento" />
+    <input type="password" id="senha" placeholder="Senha" />
+    <button onclick="salvarUsuario()">Salvar</button>
+    <button onclick="backToHome()">Voltar</button>
+  </div>
+
+  <div id="cadastro-produto" style="display:none;">
+    <h2>Cadastrar Produto</h2>
+    <input type="text" id="produto-nome" placeholder="Nome do Produto" />
+    <input type="text" id="produto-descricao" placeholder="Descrição" />
+    <input type="number" id="produto-valor" placeholder="Valor" />
+    <button onclick="salvarProduto()">Salvar Produto</button>
+    <button onclick="backToHome()">Voltar</button>
+  </div>
+
+  <div id="loja" style="display:none;">
+    <h2>Produtos</h2>
+    <div id="produtos"></div>
+    <button onclick="showCarrinho()">Ver Carrinho</button>
+  </div>
+
+  <div id="carrinho" style="display:none;">
+    <h2>Carrinho de Compras</h2>
+    <div id="produtos-carrinho"></div>
+    <button onclick="backToHome()">Voltar</button>
+  </div>
+
+  <!-- Ajuste no caminho do JavaScript -->
+  <script src="/js/app.js"></script>
+</body>
+</html>

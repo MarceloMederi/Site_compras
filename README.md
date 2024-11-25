@@ -1,0 +1,13 @@
+/Site-Compras1
+  /assets
+    /images
+  /css
+    style.css
+  /js
+    app.js
+  /server
+    server.js
+  /public
+    index.html
+  usuarios.json
+  produtos.json
