@@ -149,6 +149,7 @@ app.get("/produtos", (req, res) => {
     });
 });
 
+
 // Inicia o servidor
 const PORT = 3000;
 app.listen(PORT, () => {
