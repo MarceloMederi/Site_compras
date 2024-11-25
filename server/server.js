@@ -129,6 +129,26 @@ app.post("/cadastrarProduto", (req, res) => {
     });
 });
 
+// Rota para listar os produtos
+app.get("/produtos", (req, res) => {
+    const produtosFilePath = path.join(__dirname, "../produtos.json");
+
+    fs.readFile(produtosFilePath, "utf8", (err, data) => {
+        if (err) {
+            return res.status(500).json({ message: "Erro ao ler o arquivo de produtos" });
+        }
+
+        let produtos;
+        try {
+            produtos = JSON.parse(data);
+        } catch (parseError) {
+            return res.status(500).json({ message: "Erro ao parsear os dados do arquivo de produtos" });
+        }
+
+        res.status(200).json(produtos); // Retorna os produtos em formato JSON
+    });
+});
+
 
 // Inicia o servidor
 const PORT = 3000;
